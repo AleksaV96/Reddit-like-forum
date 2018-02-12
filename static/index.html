@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Naslovna</title>
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/mycss.css" rel="stylesheet">
+</head>
+
+<body ng-app="Aplikacija">
+    <ui-view name="navbar"></ui-view>
+    <div class="main_container">
+        <ui-view></ui-view>
+    </div>
+    </div>
+    <script src="js/jquery/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.js/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <script src="js/angularjs/angular.min.js"></script>
+    <script src="js/angularjs-ui-router/angular-ui-router.min.js"></script>
+    <script src="js/angularjs-file-upload/ng-file-upload-all.min.js"></script>
+
+    <script src="app/app.js"></script>
+    <Script src="app/navbar/navbar.js"></Script>
+    <script src="app/threads/threads.js"></script>
+    <script src="app/services/loginService.js"></script>
+    <script src="app/login/login.js"></script>
+    <Script src="app/user-profile/user-profile.js"></Script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+<div ng-repeat="a in al.articles">
+    <h1>
+        <a ui-sref="article({id: a.id})">{{a.title}}</a>
+    </h1>
+    <p>
+        <small>Kategorija: {{a['category.title']}}</small>
+    </p>
+    <p>
+        <small>{{a.name}} {{a.surname}} - {{a.published | date:'dd. MM. yyyy. HH:mm'}}</small>
+    </p>
+    <hr>
+</div>
