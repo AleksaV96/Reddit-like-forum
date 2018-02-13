@@ -44,6 +44,16 @@
                     controllerAs: 'lc'
                 }
             }
+        }).state('registration', {
+            parent: 'app',
+            url: '/registration',
+            views: {
+                '': {
+                    templateUrl: 'app/registration/registration.tpl.html',
+                    controller: 'RegistrationCtrl',
+                    controllerAs: 'rc'
+                }
+            }
         }).state('userProfile', {
             parent: 'app',
             url: '/userProfile',
