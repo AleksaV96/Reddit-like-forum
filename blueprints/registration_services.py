@@ -1,13 +1,9 @@
 import flask
-import pymysql
-from flask import Flask
 from flask import Blueprint
-from utils.db_connection import mysql
-from flaskext.mysql import MySQL
 from flask import request
+from utils.db_connection import mysql
 
 registration_services = Blueprint("registration_services", __name__)
-mysql = MySQL(cursorclass=pymysql.cursors.DictCursor)
 
 @registration_services.route("/registration", methods=["POST"])
 def addUser():

@@ -48,7 +48,7 @@
             }
         }).state('sub', {
             parent: 'app',
-            url: '/subs/{id:int}',
+            url: '/sub/{id:int}',
             views: {
                 '': {
                     templateUrl: 'app/sub/sub.tpl.html',
@@ -74,6 +74,16 @@
                     templateUrl: 'app/registration/registration.tpl.html',
                     controller: 'RegistrationCtrl',
                     controllerAs: 'rc'
+                }
+            }
+        }).state('user', {
+            parent: 'app',
+            url: '/user/{username:string}',
+            views: {
+                '': {
+                    templateUrl: 'app/profile/profile.tpl.html',
+                    controller: 'ProfileCtrl',
+                    controllerAs: 'pc'
                 }
             }
         }).state('userProfile', {

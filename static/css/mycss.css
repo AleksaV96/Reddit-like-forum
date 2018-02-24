@@ -74,6 +74,14 @@
 	border-bottom: solid black 0.5px;
 }
 
+.sub:hover {
+	background: rgb(245, 245, 245);
+}
+
+.sub a {
+	color: red;
+}
+
 .sub a h4 {
 	color: red;
 }

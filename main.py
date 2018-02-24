@@ -8,6 +8,7 @@ from flask import session
 from blueprints.thread_services import thread_services
 from blueprints.simple_login import simple_login
 from blueprints.subs_services import subs_services
+from blueprints.profile_services import profile_services
 from blueprints.user_services import user_services
 from blueprints.registration_services import registration_services
 
@@ -27,6 +28,7 @@ app.register_blueprint(simple_login)
 app.register_blueprint(registration_services)
 app.register_blueprint(thread_services, url_prefix="/threads")
 app.register_blueprint(subs_services, url_prefix="/subs")
+app.register_blueprint(profile_services, url_prefix="/user")
 app.register_blueprint(user_services, url_prefix="/users")
 
 @app.route("/")
