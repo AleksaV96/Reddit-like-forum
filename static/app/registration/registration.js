@@ -10,7 +10,7 @@
         }
 
         that.addUser = function() {
-            $http.post("/registration", that.newUser).then(function(response){
+            $http.post('registration', that.newUser).then(function(response){
                 if(response.data["status"] == "done"){
                 }
             },

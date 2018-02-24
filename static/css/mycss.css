@@ -59,4 +59,28 @@
 	margin-left: 13cm;
 }
 
+.thread {
+	margin : 0.3cm;
+	border : solid black 0.5px;
+	padding: 0.3cm;
+}
+
+.thread-info {
+	font-size: 12px;
+}
+
+.sub {
+	padding-left : 0.3cm;
+	border-bottom: solid black 0.5px;
+}
+
+.sub a h4 {
+	color: red;
+}
+
+.sub p {
+	font-size: 12px;
+	font-weight: bold;
+}
+
 

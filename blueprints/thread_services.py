@@ -16,3 +16,10 @@ def threads():
 
     return flask.jsonify(rows)
 
+@thread_services.route("/<int:thread_id>", methods=["GET"])
+def thread(thread_id):
+    cursor = mysql.get_db().cursor()
+    cursor.execute("SELECT * FROM thread LEFT JOIN user ON user.id = user_id LEFT JOIN sub ON sub.id = sub_id WHERE thread.id = %s", (thread_id))
+    row = cursor.fetchone()
+
+    return flask.jsonify(row)

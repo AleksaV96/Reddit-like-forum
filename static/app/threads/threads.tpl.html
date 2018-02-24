@@ -3,6 +3,6 @@
 </div>
 <div class="post" ng-repeat="thread in tl.threads track by $index">
       <img src={{thread.picture}}>
-      <a href="/{{thread.sub_id}}/{{thread.title}}/{{thread.id}}"><h5>{{thread.title}}</h5></a>
-      <p>submited {{thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" href="/user/{{thread.username}}">{{thread.username}}</a> to <a id="user_link" href="/s/{{thread.name}}">{{thread.name}}</a></p> 
+      <a ui-sref="thread({id: thread.id})"><h5>{{thread.title}}</h5></a>
+      <p>submited {{thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" href="/user/{{thread.username}}">{{thread.username}}</a> to <a id="user_link" ui-sref="sub({id: thread.sub_id})">{{thread.name}}</a></p> 
 </div>

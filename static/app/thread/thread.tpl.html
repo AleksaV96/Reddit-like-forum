@@ -1,0 +1,5 @@
+<div class="thread">
+    <h3>{{th.thread.title}}</h3>
+    <p class="thread-info">submited {{th.thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" href="/user/{{th.thread.username}}">{{th.thread.username}}</a> to <a id="user_link" href="/s/{{th.thread.name}}">{{th.thread.name}}</a></p>
+    <p>{{th.thread.content}}</p>
+</div>

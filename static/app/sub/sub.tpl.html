@@ -1,0 +1,8 @@
+<div class="sub-name">
+    <h3>{{ssc.sthreads.name}}</h3>
+    </div>
+    <div class="post" ng-repeat="sthread in ssc.subThreads track by $index">
+          <img src={{sthread.picture}}>
+          <a ui-sref="thread({id: sthread.id})"><h5>{{sthread.title}}</h5></a>
+          <p>submited {{sthread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" href="/user/{{thread.username}}">{{sthread.username}}</a> to <a id="user_link" ui-sref="sub({id: sthread.sub_id})">{{sthread.name}}</a></p> 
+    </div>

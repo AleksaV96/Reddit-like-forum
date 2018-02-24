@@ -1,0 +1,7 @@
+<div class="sub-name">
+    <h3>List of Subreddits</h3>
+    </div>
+    <div class="sub" ng-repeat="sub in sc.subs track by $index">
+          <a ui-sref="sub({id: sub.id})"><h4>{{sub.name}}</h4></a>
+          <p>{{sub.description}}</p>
+    </div>
