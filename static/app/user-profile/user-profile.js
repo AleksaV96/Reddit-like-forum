@@ -9,10 +9,6 @@
             loginService.isLoggedIn(function () {
                 loginService.getLoggedIn(function (user) {
                     that.user = user;
-                    // Da bi se izazvalo osvezavanje slike
-                    // na url slike dodaje se timestamp koji nema nikakvo znacenje.
-                    that.user.avatar += "?timestamp=" + Date.now();
-                    that.editUser = angular.copy(that.user);
                 },
                 function (errorReason) {
                     console.log(errorReason);
@@ -27,9 +23,6 @@
             Upload.upload({
                 url: 'users/' + that.editUser.id,
                 method: 'PUT',
-                data: {avatar: that.editUser.newAvatar,
-                       userData: Upload.json(that.editUser)}}).then(function () {
-                that.fetchData();
             },
             function (reason) {
                 console.log(reason);

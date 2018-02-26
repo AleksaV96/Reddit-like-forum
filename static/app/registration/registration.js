@@ -4,6 +4,8 @@
         var that = this;
 
         that.newUser = {
+            "name" : "",
+            "surname" : "",
             "username" : "",
             "email" : "",
             "password" : ""

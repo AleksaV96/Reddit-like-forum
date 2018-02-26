@@ -3,6 +3,7 @@
     app.controller('NavbarCtrl', ['loginService', '$state', '$scope', function(loginService, $state, $scope) {
         var that = this;
         that.loggedIn = false;
+        that.user = {};
 
         var onLogin = function() {
             that.loggedIn = true;
@@ -27,5 +28,22 @@
         function() {
             that.loggedIn = false;
         });
+
+        that.fetchData = function () {
+            loginService.isLoggedIn(function () {
+                loginService.getLoggedIn(function (user) {
+                    that.user = user;
+                },
+                function (errorReason) {
+                    console.log(errorReason);
+                })
+            },
+            function () {
+                $state.go('home');
+            });
+        }
+
+        that.fetchData();
+
     }]);
 })(angular);

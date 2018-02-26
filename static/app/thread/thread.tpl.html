@@ -1,5 +1,5 @@
 <div class="thread">
     <h3>{{th.thread.title}}</h3>
-    <p class="thread-info">submited {{th.thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: th.thread.username})">{{th.thread.username}}</a> to <a id="user_link" ui-sref="sub({id: th.thread.sub_id})">{{th.thread.name}}</a></p>
+    <p class="thread-info">submited {{th.thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: th.thread.username})">{{th.thread.username}}</a> to <a id="user_link" ui-sref="sub({id: th.thread.sub_id})">{{th.thread.subname}}</a></p>
     <p>{{th.thread.content}}</p>
 </div>

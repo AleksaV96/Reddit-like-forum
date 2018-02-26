@@ -13,10 +13,10 @@ def addUser():
     cursor = db.cursor()
 
     q = '''INSERT INTO
-    user(username, email, password)
-    VALUES(%s, %s, %s)'''
+    user(name, surname, username, email, password)
+    VALUES(%s, %s, %s, %s, %s)'''
 
-    cursor.execute(q, (data["username"], data["email"], data["password"]))
+    cursor.execute(q, (data["name"], data["surname"], data["username"], data["email"], data["password"]))
     db.commit()
 
     return flask.jsonify({"status": "done"}), 201

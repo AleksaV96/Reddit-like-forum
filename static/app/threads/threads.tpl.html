@@ -4,5 +4,5 @@
 <div class="post" ng-repeat="thread in tl.threads track by $index">
       <img src={{thread.picture}}>
       <a ui-sref="thread({id: thread.id})"><h5>{{thread.title}}</h5></a>
-      <p>submited {{thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: thread.username})">{{thread.username}}</a> to <a id="user_link" ui-sref="sub({id: thread.sub_id})">{{thread.name}}</a></p> 
+      <p>submited {{thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: thread.username})">{{thread.username}}</a> to <a id="user_link" ui-sref="sub({id: thread.sub_id})">{{thread.subname}}</a></p> 
 </div>
