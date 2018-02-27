@@ -9,8 +9,13 @@
         <div class="card-footer"><h5><span style="text-decoration: underline; color:dimgrey">Email:</span>    {{up.user.email}}</h5></div>
     </div>
     <hr>
+
+    <div class="alert alert-success" ng-show="up.success">
+        <strong>Profile succesfuly changed!</strong>
+    </div>
+    <div class="container">
     <div class="card">
-    <form ng-submit="up.updateUser()">
+    <form ng-submit="up.changeProfile()">
         <div class="card-body">Change profile</div>
         <div class="card-footer">
         <div class="form-group">
@@ -25,10 +30,17 @@
         </div>
         </div>
         <div class="card-footer">
+            <div class="form-group">
+            <label for="surname">Email:</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="email" ng-model="up.editUser.email">
+        </div>
+        </div>
+        <div class="card-footer">
         <div>
             <input type="submit" class="btn btn-primary" value="Change">
         </div>
         </div>
     </form>
+    </div>
     </div>
 </div>

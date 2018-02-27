@@ -12,7 +12,16 @@
             <li class="nav-item" ui-sref-active="active">
                 <a class="nav-link" ui-sref="subs">Subreddits</a>
             </li>
+            <a ui-sref="addThread">
+                <button class="btn btn-danger navbar-btn" ui-sref-active="active" ng-show="!nb.admin && nb.loggedIn">Add Thread</button>
+            </a>
+            <a ui-sref="addThread">
+                <button class="btn btn-primary navbar-btn" ui-sref-active="active" ng-show="nb.admin && nb.loggedIn">Admin panel</button>
+            </a>
         </ul>
+
+        
+        
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item" ui-sref-active="active" ng-show="!nb.loggedIn">
                 <a class="nav-link" ui-sref="registration">Register</a>

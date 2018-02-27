@@ -26,10 +26,11 @@ mysql.init_app(app)
 
 app.register_blueprint(simple_login)
 app.register_blueprint(registration_services)
+app.register_blueprint(user_services)
 app.register_blueprint(thread_services, url_prefix="/threads")
 app.register_blueprint(subs_services, url_prefix="/subs")
 app.register_blueprint(profile_services, url_prefix="/user")
-app.register_blueprint(user_services, url_prefix="/users")
+
 
 @app.route("/")
 @app.route("/index")

@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="col-md-5">
+    <div class="form-area">  
+        <form role="form" ng-submit="ta.addNewThread()">
+        <br style="clear:both">
+            <h3 style="margin-bottom: 25px; text-align: center;">New Thread</h3>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Title" ng-required="true" ng-model="ta.newThread.title">
+            </div>
+
+            <div class="form-group">
+                    <select class="form-control" id="sub" name="sub" ng-options="sub.subname for sub in ta.subs track by sub.id" ng-model="ta.newThread.sub" ng-required="true"></select>
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control" type="textarea" id="message" placeholder="Content" rows="7" ng-required="true" ng-model="ta.newThread.content"></textarea>                    
+            </div>
+            
+            <button type="submit" class="btn btn-primary pull-right">Add thread</button>
+        </form>
+    </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 import flask
+import datetime
 from flask import Blueprint
+from flask import request
 from utils.db_connection import mysql
 
 thread_services = Blueprint("thread_services", __name__)
@@ -23,3 +25,21 @@ def thread(thread_id):
     row = cursor.fetchone()
 
     return flask.jsonify(row)
+
+@thread_services.route("/addThread", methods=["POST"])
+def addThread():
+    
+    data = request.json
+    db = mysql.get_db()
+    cursor = db.cursor()
+
+    q = '''INSERT INTO
+    thread(title, content, published, user_id, sub_id)
+    VALUES(%s, %s, %s, %s, %s)'''   
+
+    data["published"] = "2017-12-12"
+
+    cursor.execute(q, (data["title"], data["content"], data["published"], data["user_id"], data["sub_id"]))
+    db.commit()
+
+    return flask.jsonify({"status": "done"}), 201

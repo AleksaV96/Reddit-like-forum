@@ -1,15 +1,19 @@
 (function (angular) {
     var app = angular.module('Aplikacija');
     app.controller('NavbarCtrl', ['loginService', '$state', '$scope', function(loginService, $state, $scope) {
+        
         var that = this;
         that.loggedIn = false;
         that.user = {};
+        that.admin = false;
 
         var onLogin = function() {
             that.loggedIn = true;
         }
 
         var onLogout = function() {
+            location.reload();
+            that.admin = false;
             that.loggedIn = false;
         }
 
@@ -33,6 +37,10 @@
             loginService.isLoggedIn(function () {
                 loginService.getLoggedIn(function (user) {
                     that.user = user;
+                    if(that.user.status == "admin")
+                    {
+                        that.admin = true;
+                    }
                 },
                 function (errorReason) {
                     console.log(errorReason);
@@ -41,6 +49,10 @@
             function () {
                 $state.go('home');
             });
+        }
+
+        that.checkStatus = function () {
+
         }
 
         that.fetchData();

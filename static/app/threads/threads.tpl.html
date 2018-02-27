@@ -2,6 +2,7 @@
 <h3>Main page of reddit</h3>
 </div>
 <div class="post" ng-repeat="thread in tl.threads track by $index">
+      <button ng-show="tl.admin" type="button" class="btn float-left btn-danger btn-xs">X</button>
       <img src={{thread.picture}}>
       <a ui-sref="thread({id: thread.id})"><h5>{{thread.title}}</h5></a>
       <p>submited {{thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: thread.username})">{{thread.username}}</a> to <a id="user_link" ui-sref="sub({id: thread.sub_id})">{{thread.subname}}</a></p> 

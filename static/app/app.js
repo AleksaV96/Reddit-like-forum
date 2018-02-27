@@ -36,6 +36,16 @@
                     controllerAs: 'th'
                 }
             }
+        }).state('addThread', {
+            parent: 'app',
+            url: '/addThread',
+            views: {
+                '': {
+                    templateUrl: 'app/thread/addThread.tpl.html',
+                    controller: 'AddThreadCtrl',
+                    controllerAs: 'ta'
+                }
+            }
         }).state('subs', {
             parent: 'app',
             url: '/subs',
@@ -84,6 +94,16 @@
                     templateUrl: 'app/profile/profile.tpl.html',
                     controller: 'ProfileCtrl',
                     controllerAs: 'pc'
+                }
+            }
+        }).state('changeProfile', {
+            parent: 'app',
+            url: '/changeProfile',
+            views: {
+                '': {
+                    templateUrl: 'app/user-profile/user-profile.tpl.html',
+                    controller: 'UserProfileCtrl',
+                    controllerAs: 'up'
                 }
             }
         }).state('userProfile', {
