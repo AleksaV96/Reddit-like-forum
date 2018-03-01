@@ -1,11 +1,24 @@
 <div class="container">
     <div class="card">
-        <div class="card-body">
+        <div class="card-header">
             <h3>{{th.thread.title}}</h3>
-            <p class="thread-info">submited {{th.thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: th.thread.username})">{{th.thread.username}}</a> to <a id="user_link" ui-sref="sub({id: th.thread.sub_id})">{{th.thread.subname}}</a></p>
+            <p class="thread-info">submited {{th.thread.published | date : 'dd. MM. yyyy.'}} by <a ui-sref="user({username: th.thread.username})">{{th.thread.username}}</a> to <a ui-sref="sub({id: th.thread.sub_id})">{{th.thread.subname}}</a></p>
         </div>
-        <div class="card-footer">
+        <div class="card-body">
             <p>{{th.thread.content}}</p>
         </div>
     </div>
-</div>
+    <div style="margin-top:5mm; margin-bottom:5mm; padding-left:2cm; padding-right:2cm" class="container">
+        <a style="color:dimgray; text-decoration:none;" href="" ng-click="th.showCom()"><h6>Comments: <span class="badge badge-pill badge-secondary">{{th.comments.length}}</span></h6></a>
+        <div ng-show="th.showComments" style="margin-top:3mm" class="card" ng-repeat="comment in th.comments">
+            <div style="color:rgb(255, 136, 0);padding:3mm;" class="card-header">
+                <a ui-sref="user({username: comment.username})">{{comment.username}}:</a><span style="color:slategrey;float:right;font-size:11px;">{{comment.published}}</span>
+            </div>
+            <div style="padding:3mm" class="card-body">{{comment.content}}</div>
+        </div>
+            <div ng-show="th.logged" style="margin-top:5mm;padding:1cm;" class="form-group">
+            <textarea ng-model="th.newComment.content" rows="4" class="form-control"></textarea>
+            <button ng-click="th.postComment(th.newComment)" style="margin:3mm;float:right" type="button" class="btn btn-primary btn-md">Post</button>
+            </div>
+        </div>
+    </div>

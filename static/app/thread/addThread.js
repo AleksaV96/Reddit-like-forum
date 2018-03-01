@@ -38,6 +38,7 @@
 
             $http.post('/threads/addThread', that.newThread).then(function(response) {
                 if(response.data["status"] == "done"){
+                    that.newThread = null;
                     that.success = true;
                 }
             },

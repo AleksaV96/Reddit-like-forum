@@ -106,6 +106,16 @@
                     controllerAs: 'up'
                 }
             }
+        }).state('adminPanel', {
+            parent: 'app',
+            url: '/adminPanel',
+            views: {
+                '': {
+                    templateUrl: 'app/admin-panel/admin-panel.tpl.html',
+                    controller: 'AdminCtrl',
+                    controllerAs: 'ac'
+                }
+            }
         }).state('userProfile', {
             parent: 'app',
             url: '/userProfile',

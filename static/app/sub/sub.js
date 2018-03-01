@@ -38,6 +38,15 @@
         
         }
 
+        that.deleteThread = function(id) {
+            $http.delete('threads/' + id).then(function(response){
+                that.openSubThreads();
+            },
+            function(reason){
+                console.log(reason)
+            });
+        };
+
 
         that.fetchLoggedUser()
         that.openSubThreads();

@@ -2,7 +2,7 @@
     <h3>{{ssc.subThreads[0].subname}}</h3>
     </div>
     <div class="post" ng-repeat="sthread in ssc.subThreads track by $index">
-          <button ng-show="ssc.admin" type="button" class="btn float-left btn-danger btn-xs">X</button>
+          <button ng-click="ssc.deleteThread(sthread.id)" ng-show="ssc.admin" type="button" class="btn float-left btn-danger btn-xs">X</button>
           <img src={{sthread.picture}}>
           <a ui-sref="thread({id: sthread.id})"><h5>{{sthread.title}}</h5></a>
           <p>submited {{sthread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: sthread.username})">{{sthread.username}}</a> to <a id="user_link" ui-sref="sub({id: sthread.sub_id})">{{sthread.subname}}</a></p> 

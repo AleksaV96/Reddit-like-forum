@@ -1,0 +1,77 @@
+<div style="float:right; right:6.5cm; z-index:1000; position:relative">
+    <button class="btn btn-primary btn-md" type="button" ng-click="ac.usersView()">View</button>
+    <button class="btn btn-danger btn-md" type="button" ng-click="ac.usersEdit()">Edit</button>
+</div>
+<div class="container">
+<div class="col-md-8 col-md-offset-2">
+        <input type="text" style="margin-top:5mm" ng-model="ac.search" class="form-control" placeholder="Search users">
+        <table class="table table-striped">
+            <thead style="background-color:rgb(253, 247, 241)">
+                <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Name</th>
+                <th>Surname</th>
+                </tr>
+            </thead>
+            <tbody ng-show="ac.usersEditBool">
+                <tr ng-repeat="user in ac.users | filter:ac.search">
+                <td><input type="text" ng-model="user.username"></td>
+                <td><input type="text" ng-model="user.email"></td>
+                <td>{{user.status}}</td>
+                <td><input type="text" ng-model="user.name"></td>
+                <td><input type="text" ng-model="user.surname"></td>
+                <td><button type="button" class="btn btn-primary btn-sm" ng-click="ac.admChangeUser(user)">Change</button></td>
+                <td><button ng-click="ac.deleteUser(user.id)" type="button" class="btn float-left btn-danger btn-sm">X</button></td>
+                </tr>
+            </tbody>
+            <tbody ng-show="!ac.usersEditBool">
+                <tr ng-repeat="user in ac.users | filter:ac.search">
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.status}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.surname}}</td>
+                </tr>
+            </tbody>
+            </table>
+    </div>
+</div>
+<hr>
+<div style="float:right; right:6.5cm; z-index:1000; position:relative">
+    <button class="btn btn-primary btn-md" type="button" ng-click="ac.subsView()">View</button>
+    <button class="btn btn-danger btn-md" type="button" ng-click="ac.subsEdit()">Edit</button>
+</div>
+<div class="container">
+        <div class="col-md-8 col-md-offset-2">
+                <input type="text" style="margin-top:5mm" ng-model="ac.subsearch" class="form-control" placeholder="Search subs">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th>Subname</th>
+                        <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-show="ac.subsEditBool">
+                        <tr ng-repeat="sub in ac.subs | filter:ac.subsearch">
+                        <td><input type="text" ng-model="sub.subname"></td>
+                        <td><input type="text" ng-model="sub.description"></td>
+                        <td><button type="button" class="btn btn-primary btn-sm" ng-click="ac.admChangeSub(sub)">Change</button></td>
+                        <td><button ng-click="ac.deleteSub(sub.id)" type="button" class="btn float-left btn-danger btn-sm">X</button></td>
+                        </tr>
+                        <tr>
+                        <td><input type="text" ng-model="ac.newSb.subname"></td>
+                        <td><input type="text" ng-model="ac.newSb.description"></td>
+                        <td><button type="button" class="btn btn-success btn-sm" ng-click="ac.addNewSub(ac.newSb)">Add</button></td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-show="!ac.subsEditBool">
+                        <tr ng-repeat="sub in ac.subs | filter:ac.subsearch">
+                        <td>{{sub.subname}}</td>
+                        <td>{{sub.description}}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+            </div>
+        </div>

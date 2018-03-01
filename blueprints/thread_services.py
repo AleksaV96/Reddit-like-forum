@@ -43,3 +43,48 @@ def addThread():
     db.commit()
 
     return flask.jsonify({"status": "done"}), 201
+
+@thread_services.route("/<int:thread_id>", methods=["DELETE"])
+def delete_thread(thread_id):
+    db = mysql.get_db()
+    cursor = db.cursor()
+    cursor.execute("DELETE FROM thread WHERE id=%s", (thread_id))
+    db.commit()
+
+    return ""
+
+@thread_services.route("/comments/<int:thread_id>", methods=["GET"])
+def comments(thread_id):
+
+    cursor = mysql.get_db().cursor()
+    cursor.execute("SELECT * FROM comment, user, userscomments WHERE comment_id = comment.id AND user_id = user.id AND thread_id = %s", (thread_id))
+    rows = cursor.fetchall()
+
+    return flask.jsonify(rows)
+
+@thread_services.route("/comments/addComment", methods=["POST"])
+def post_comment():
+
+    data = request.json
+    db = mysql.get_db()
+    cursor = db.cursor()
+
+    q = '''INSERT INTO
+    comment(content, published, thread_id)
+    VALUES(%s, %s, %s)''' 
+
+    data["published"] = "2017-12-12"
+
+    cursor.execute(q, (data["content"], data["published"], data["thread_id"]))
+    db.commit()
+
+    cursor.execute("SELECT id FROM comment ORDER BY id DESC LIMIT 1")
+    comment_id = cursor.fetchone()
+
+    q = '''INSERT INTO
+    userscomments(comment_id, user_id)
+    VALUES(%s, %s)''' 
+
+    cursor.execute(q, (comment_id["id"], data["user_id"]))
+    db.commit()
+    return flask.jsonify({"status": "done"}), 201
