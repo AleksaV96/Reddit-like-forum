@@ -71,6 +71,48 @@
             });
         }
 
+        that.deleteComment = function(id) {
+            $http.delete('threads/comments/' + id).then(function(response){
+                that.pullComments();
+            },
+            function(reason){
+                console.log(reason)
+            });
+        };
+
+        that.sortThreadsAsc = function() {
+            $http.get('threads/sort/asc').then(function(response) {
+                that.threads = response.data;
+            }, function(reason) {
+                console.log(reason);
+            });
+        }
+
+        that.sortThreadsDesc = function() {
+            $http.get('threads/sort/desc').then(function(response) {
+                that.threads = response.data;
+            }, function(reason) {
+                console.log(reason);
+            });
+        }
+
+        that.sortCommentsAsc = function() {
+            $http.get('threads/comments/sort/'+$stateParams.id+'/asc').then(function(response) {
+                that.comments = response.data;
+                that.pullComments();
+            }, function(reason) {
+                console.log(reason);
+            });
+        }
+
+        that.sortCommentsDesc = function() {
+            $http.get('threads/comments/sort/'+$stateParams.id+'/desc').then(function(response) {
+                that.comments = response.data;
+            }, function(reason) {
+                console.log(reason);
+            });
+        }
+
         that.fetchLoggedUser = function () {
             loginService.isLoggedIn(function () {
                 loginService.getLoggedIn(function (user) {

@@ -1,8 +1,12 @@
 <div class="sub-name">
 <h3>Main page of reddit</h3>
+<h6 style="float:right; margin-top:5mm; margin-right:1mm;">Order by:
+      <a style="color:dimgray; text-decoration:none;" href="" ng-click="tl.sortThreadsDesc()">Newest</a> /
+      <a style="color:dimgray; text-decoration:none;" href="" ng-click="tl.sortThreadsAsc()">Oldest</a>
+</h6>
 </div>
 <div class="post" ng-repeat="thread in tl.threads track by $index">
-      <button ng-click="tl.deleteThread(thread.id)" ng-show="tl.admin" type="button" class="btn float-left btn-danger btn-xs">X</button>
+      <button ng-click="tl.deleteThread(thread.id)" ng-show="tl.admin" type="button" class="btn float-left btn-danger btn-sm" style="margin-top:2mm; margin-left:1mm">X</button>
       <img src={{thread.picture}}>
       <a ui-sref="thread({id: thread.id})"><h5>{{thread.title}}</h5></a>
       <p>submited {{thread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: thread.username})">{{thread.username}}</a> to <a id="user_link" ui-sref="sub({id: thread.sub_id})">{{thread.subname}}</a></p> 

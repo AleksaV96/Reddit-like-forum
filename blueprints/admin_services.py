@@ -54,7 +54,23 @@ def delete_user(user_id):
 def delete_sub(sub_id):
     db = mysql.get_db()
     cursor = db.cursor()
+
+    cursor.execute("SELECT id FROM thread WHERE sub_id=%s", (sub_id))
+    thread_ids = cursor.fetchall()
+    comment_ids = []
+    for thrd_id in thread_ids:
+        cursor.execute("SELECT id FROM comment WHERE thread_id=%s", (thrd_id["id"]))
+        comment_ids += cursor.fetchall()
+
+    for com_id in comment_ids:
+        cursor.execute("DELETE FROM userscomments WHERE comment_id=%s", (com_id["id"]))
+
+    for com_id in comment_ids:
+        cursor.execute("DELETE FROM comment WHERE id=%s", (com_id["id"]))
+    
+    cursor.execute("DELETE FROM thread WHERE sub_id=%s", (sub_id))
     cursor.execute("DELETE FROM sub WHERE id=%s", (sub_id))
+
     db.commit()
 
     return ""

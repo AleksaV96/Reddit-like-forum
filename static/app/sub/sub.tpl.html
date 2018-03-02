@@ -1,8 +1,12 @@
 <div class="sub-name">
     <h3>{{ssc.subThreads[0].subname}}</h3>
+    <h6 style="float:right; margin-top:5mm; margin-right:1mm;">Order by:
+        <a style="color:dimgray; text-decoration:none;" href="" ng-click="ssc.sortSubThreadsDesc()">Newest</a> /
+        <a style="color:dimgray; text-decoration:none;" href="" ng-click="ssc.sortSubThreadsAsc()">Oldest</a>
+    </h6>
     </div>
     <div class="post" ng-repeat="sthread in ssc.subThreads track by $index">
-          <button ng-click="ssc.deleteThread(sthread.id)" ng-show="ssc.admin" type="button" class="btn float-left btn-danger btn-xs">X</button>
+          <button ng-click="ssc.deleteThread(sthread.id)" ng-show="ssc.admin" type="button" class="btn float-left btn-danger btn-sm" style="margin-top:2mm; margin-left:1mm">X</button>
           <img src={{sthread.picture}}>
           <a ui-sref="thread({id: sthread.id})"><h5>{{sthread.title}}</h5></a>
           <p>submited {{sthread.published | date : 'dd. MM. yyyy.'}} by <a id="user_link" ui-sref="user({username: sthread.username})">{{sthread.username}}</a> to <a id="user_link" ui-sref="sub({id: sthread.sub_id})">{{sthread.subname}}</a></p> 

@@ -16,6 +16,21 @@
             });
         }
 
+        that.sortSubThreadsAsc = function() {
+            $http.get('subs/sort/'+$stateParams.id+'/asc').then(function(response) {
+                that.subThreads = response.data;
+            }, function(reason) {
+                console.log(reason);
+            });
+        }
+
+        that.sortSubThreadsDesc = function() {
+            $http.get('subs/sort/'+$stateParams.id+'/desc').then(function(response) {
+                that.subThreads = response.data;
+            }, function(reason) {
+                console.log(reason);
+            });
+        }
         
         that.fetchLoggedUser = function () {
             loginService.isLoggedIn(function () {

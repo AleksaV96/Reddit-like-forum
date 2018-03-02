@@ -9,16 +9,25 @@
         </div>
     </div>
     <div style="margin-top:5mm; margin-bottom:5mm; padding-left:2cm; padding-right:2cm" class="container">
+        <div style="display:inline-block">
         <a style="color:dimgray; text-decoration:none;" href="" ng-click="th.showCom()"><h6>Comments: <span class="badge badge-pill badge-secondary">{{th.comments.length}}</span></h6></a>
+        </div>
+        <h6 style="float:right;">Order by:
+            <a style="color:dimgray; text-decoration:none;" href="" ng-click="th.sortCommentsDesc()">Newest</a> /
+            <a style="color:dimgray; text-decoration:none;" href="" ng-click="th.sortCommentsAsc()">Oldest</a>
+        </h6>
+
         <div ng-show="th.showComments" style="margin-top:3mm" class="card" ng-repeat="comment in th.comments">
             <div style="color:rgb(255, 136, 0);padding:3mm;" class="card-header">
                 <a ui-sref="user({username: comment.username})">{{comment.username}}:</a><span style="color:slategrey;float:right;font-size:11px;">{{comment.published}}</span>
             </div>
-            <div style="padding:3mm" class="card-body">{{comment.content}}</div>
+            <div style="padding:3mm" class="card-body">{{comment.content}}
+            <button ng-click="th.deleteComment(comment.id)" ng-show="th.admin" type="button" class="btn float-right btn-danger btn-sm">X</button>
+            </div>
         </div>
             <div ng-show="th.logged" style="margin-top:5mm;padding:1cm;" class="form-group">
             <textarea ng-model="th.newComment.content" rows="4" class="form-control"></textarea>
-            <button ng-click="th.postComment(th.newComment)" style="margin:3mm;float:right" type="button" class="btn btn-primary btn-md">Post</button>
+            <button ng-click="th.postComment(th.newComment)" style="margin:3mm;float:right" type="button" class="btn btn-primary btn-md">Post Comment</button>
             </div>
         </div>
     </div>
