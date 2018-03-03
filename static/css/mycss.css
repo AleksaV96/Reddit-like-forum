@@ -52,11 +52,11 @@
 
 .sub-name {
 	border-bottom: solid rgba(94, 91, 91, 0.897) 0.5px;
+	text-align: center;
 }
 
 .sub-name h3 {
 	display: inline-block;
-	margin-left: 13cm;
 }
 
 .thread {

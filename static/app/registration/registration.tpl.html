@@ -18,8 +18,12 @@
 	</head>
 	<body>
 		<div class="container">
+
 			<div class="row main">
+
 				<div class="main-login main-center">
+
+
 					<form class="form-horizontal" method="post" ng-submit="rc.addUser()">
                         
 
@@ -73,10 +77,29 @@
 							</div>
 						</div>
 
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Repeat password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="password" id="password" ng-model="rc.newUser.passwordTest" ng-required="true"  placeholder="Repeat your password"/>
+								</div>
+							</div>
+						</div>
+
 						<div class="form-group ">
 							<button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
 						</div>
 					</form>
+
+						<div class="alert alert-danger" ng-show="rc.passwordMismatch">
+							Passwords doesn't match.
+						</div>
+			
+						<div class="alert alert-success" ng-show="rc.registrationSuccess">
+							Successful registration.
+						</div>
+
 				</div>
 			</div>
 		</div>

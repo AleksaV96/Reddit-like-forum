@@ -1,5 +1,9 @@
 <div class="sub-name">
     <h3>List of Subreddits</h3>
+    <h6 style="float:right; margin-top:5mm; margin-right:1mm;">Sort alphabetically:
+        <a style="color:dimgray; text-decoration:none;" href="" ng-click="sc.sortSubsAlphabeticallyAsc()">A</a> /
+        <a style="color:dimgray; text-decoration:none;" href="" ng-click="sc.sortSubsAlphabeticallyDesc()">Z</a>
+    </h6>
     </div>
     <div class="sub" ng-repeat="sub in sc.subs track by $index">
           <a ui-sref="sub({id: sub.id})"><h4>{{sub.subname}}</h4></a>

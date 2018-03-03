@@ -16,7 +16,15 @@ def subs():
 def sub_threads(sub_id):
     cursor = mysql.get_db().cursor()
     cursor.execute("SELECT * FROM thread LEFT JOIN user ON user.id = user_id LEFT JOIN sub ON sub.id = sub_id WHERE thread.sub_id=%s", sub_id)
-    row = cursor.fetchall()
+    rows = cursor.fetchall()
+
+    return flask.jsonify(rows)
+
+@subs_services.route("/getSub/<int:sub_id>", methods=["GET"])
+def get_sub(sub_id):
+    cursor = mysql.get_db().cursor()
+    cursor.execute("SELECT * FROM sub WHERE sub.id=%s", (sub_id))
+    row = cursor.fetchone()
 
     return flask.jsonify(row)
 
@@ -44,4 +52,18 @@ def sort_sub_threads_desc(sub_id):
 
     return flask.jsonify(rows)
 
+@subs_services.route("/sortSubs/asc", methods=["GET"])
+def subs_sort_asc():
+    cursor = mysql.get_db().cursor()
+    cursor.execute("SELECT * FROM sub ORDER BY subname ASC")
+    rows = cursor.fetchall()
 
+    return flask.jsonify(rows)
+
+@subs_services.route("/sortSubs/desc", methods=["GET"])
+def subs_sort_desc():
+    cursor = mysql.get_db().cursor()
+    cursor.execute("SELECT * FROM sub ORDER BY subname DESC")
+    rows = cursor.fetchall()
+
+    return flask.jsonify(rows)

@@ -4,9 +4,18 @@
         
         var that = this;
         that.subThreads = [];
+        that.sub = {};
 
         that.user = {};
         that.admin = false;
+
+        that.openSub = function() {
+            $http.get('subs/getSub/'+$stateParams.id).then(function(response) {
+                that.sub = response.data;
+            }, function(reason) {
+                console.log(reason);
+            });
+        }
 
         that.openSubThreads = function() {
             $http.get('subs/'+$stateParams.id).then(function(response) {
@@ -64,6 +73,7 @@
 
 
         that.fetchLoggedUser()
+        that.openSub();
         that.openSubThreads();
   
     }]);
