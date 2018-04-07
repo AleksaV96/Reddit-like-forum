@@ -5,8 +5,6 @@ from flask import Blueprint
 from flask import request
 from flask import session
 
-# Da ne bi doslo do ciklicnih zavisnosti uveden je novi modul
-# koji sadrzi objekat koji predstavlja konekciju ka bazi podataka.
 from utils.db_connection import mysql
 
 simple_login = Blueprint("simple_login", __name__)
@@ -26,8 +24,7 @@ def login():
 
 @simple_login.route("/isLoggedin", methods=["GET"])
 def is_loggedin():
-    # Vraca true ako je korisnik ulogovan,
-    # u suprotnom vraca false.
+
     return flask.jsonify(session.get("user") is not None)
 
 @simple_login.route("/loggedInUser", methods=["GET"])
@@ -38,7 +35,7 @@ def logged_in_user():
         cursor.execute("SELECT * FROM user WHERE id=%s", (session.get("user")["id"]))
         user = cursor.fetchone()
 
-        # Dobavljanje naziva slike korisnika.
+
         files = os.listdir("static/media/avatars")
         avatar = fnmatch.filter(files, "user_{0}.*".format(user["id"]))
         if avatar != []:
